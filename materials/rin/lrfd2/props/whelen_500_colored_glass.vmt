@@ -1,0 +1,8 @@
+"DecalModulate"
+{
+	"$basetexture" "rin/lrfd2/props/whelen_500_colored_glass"
+	"$model" "1"
+	"$mod2x" "1"
+	"$nocull" "1"
+
+}
