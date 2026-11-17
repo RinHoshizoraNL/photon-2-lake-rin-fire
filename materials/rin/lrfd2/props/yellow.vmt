@@ -1,6 +1,6 @@
 "VertexLitGeneric"
 {
-	"$basetexture" "rin/lrfd2/props/red"
+	"$basetexture" "rin/lrfd2/props/yellow"
     "$bumpmap" "sentry/shared/skin_nm"
 	
     "$envmap" "env_cubemap"

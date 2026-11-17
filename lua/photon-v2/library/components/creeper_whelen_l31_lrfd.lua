@@ -249,9 +249,6 @@ COMPONENT.Inputs = {
         ["MODE1"] = {
             Lights = "code:_SP_SF60_DVI",
         },
-        ["MODE2"] = {
-            Lights = "code:_F_ROT118",
-        },
         ["MODE3"] = {
             Lights = "code:_F_ROT250",
         }

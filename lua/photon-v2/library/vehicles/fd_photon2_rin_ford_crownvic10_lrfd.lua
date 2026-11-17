@@ -154,7 +154,18 @@ VEHICLE.Equipment = {
 						Component = "lrfd_photon_whe_freedom",
 						Position = Vector( 0, -19.2, 70.6 ),
 						Angles = Angle( 0, 90, 0 ),
-						Scale = 0.9
+						Scale = 0.9,
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {
+									All = "CODE3"
+								},
+								["MODE2"] = {},
+								["MODE3"] = {
+									All = "CODE3"
+								}
+							},
+						}
 					}
 				}
 			}
@@ -169,8 +180,8 @@ VEHICLE.Equipment = {
 					{
 						Name = "@grille_tir3",
 						Component = "anemolis_whelen_tir3",
-						Position = Vector( 12, 108, 32 ),
-						Angles = Angle( 182, -4, 0 ),
+						Position = Vector( -12, 108, 32 ),
+						Angles = Angle( 178, 4, 0 ),
 						Scale = 1,
 						Segments = {
 							whelen_tir3 = {
@@ -182,10 +193,10 @@ VEHICLE.Equipment = {
 						},
 						Inputs = {
 							["Emergency.Warning"] = {
-								["MODE1"] = {},
-								["MODE2"] = {
-									whelen_tir3 = "CODE"
+								["MODE1"] = {
+									whelen_tir3 = "STAGE3"
 								},
+								["MODE2"] = {},
 								["MODE3"] = {
 									whelen_tir3 = "STAGE3"
 								}
@@ -194,8 +205,11 @@ VEHICLE.Equipment = {
                     },
                     {
 						Inherit = "@grille_tir3",
-						Position = Vector( -12, 108, 32 ),
-						Angles = Angle( 178, 4, 0 ),
+						Position = Vector( 12, 108, 32 ),
+						Angles = Angle( 182, -4, 0 ),
+						States = {
+							[1] = "B",
+						},
                         Phase = 180
 					}
 				}
@@ -214,6 +228,13 @@ VEHICLE.Equipment = {
 						Position = Vector( 0, -72.6, 50.9 ),
 						Angles = Angle( 0, -90, 0 ),
 						Scale = 1,
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {
+									Outer = "CODE3"
+								},
+							},
+						},
 						RenderGroup = RENDERGROUP_OPAQUE
 					}
 				},
@@ -257,7 +278,7 @@ VEHICLE.Equipment = {
 					{ BodyGroup = "partition", Value = 1 },
 					{ BodyGroup = "door_l_notch", Value = 0 },
 					{ BodyGroup = "door_r_notch", Value = 0 },
-					{ BodyGroup = "doortrim", Value = 0 },
+					{ BodyGroup = "doortrim", Value = 2 },
 				},
 				Components = {
 					{

@@ -23,57 +23,341 @@ VEHICLE.Equipment = {
 				Option = "Tanker 9",
 				SubMaterials = {
 					{ Id = 12, Material = "rin/lrfd2/arrow_tanker/tanker_9" },
+					{ Id = 15, Material = "rin/lrfd2/props/yellow" },
 				},
 			},
 		}
 	},
 	{
-		Category = "Front Flashers",
+		Category = "Lightbar",
 		Options = {
-			{
-				Option = "Osaka Siren LAF-150",
+            {
+				Option = "Whelen Freedom",
 				Components = {
 					{
-						Component = "oss_laf150_lrfd", --LEFT INNER
-						Position = Vector( -28.9, 171.1, 57.5 ),
-						BodyGroups = {
-							["bracket"] = 1,
-							["mount"] = 0,
-						},
+                        Component = "lrfd_whelen_freedom70",
+                        Position = Vector( 0, 140, 106.2),
+						Angles = Angle( 0, 90, 0 ),
+						Scale = 0.8,
+					},
+				}
+			},
+        }
+	},
+	{
+		Category = "Front Lights",
+		Options = {
+			{
+				Option = "Whelen 600 Super-LED",
+				Components = {
+					{
+						Name = "@front_600",
+						Component = "creeper_whelen_600_superled",
+						Position = Vector( 29, 169.6, 57.45 ),
 						Angles = Angle( 0, 0, 0 ),
-						Scale = 0.93
+						Scale = 0.8,
+						Segments = {
+							LightEMS = {
+								Frames = {
+									[1] = "1:R 3:R"
+								},
+								Sequences = {
+									["STAGE3"] = sequence():TripleFlash( 1, 0 ):SetTiming( 1/20 ),
+								}
+							},
+						},
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3"
+								}
+							},
+						},
+						SubMaterials = {
+							[8] = "sentry/props/koitoflasher/glass",
+						},
 					},
 					{
-						Component = "oss_laf150_lrfd", --LEFT OUTER
-						Position = Vector( -36.1, 171.1, 57.5 ),
-						BodyGroups = {
-							["bracket"] = 1,
-							["mount"] = 0,
-						},
+						Inherit = "@front_600",
+						Position = Vector( -29, 169.6, 57.45 ),
 						Angles = Angle( 0, 0, 0 ),
-						Scale = 0.93,
-						Phase = 90,
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3"
+								}
+							},
+						}
 					},
 					{
-						Component = "oss_laf150_lrfd", --RIGHT INNER
-						Position = Vector( 28.9, 171.1, 57.5 ),
-						BodyGroups = {
-							["bracket"] = 1,
-							["mount"] = 0,
-						},
+						Inherit = "@front_600",
+						Position = Vector( 36.2, 169.6, 57.45 ),
 						Angles = Angle( 0, 0, 0 ),
-						Scale = 0.93
+						Segments = {
+							LightEMS = {
+								Frames = {
+									[1] = "1:B 3:B"
+								},
+							},
+						},
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3:180"
+								}
+							},
+						},
+						SubMaterials = {
+							[8] = "sentry/props/koitoflasher/glass_blue",
+						},
 					},
 					{
-						Component = "oss_laf150_lrfd", --RIGHT OUTER
-						Position = Vector( 36.1, 171.1, 57.5 ),
-						BodyGroups = {
-							["bracket"] = 1,
-							["mount"] = 0,
-						},
+						Inherit = "@front_600",
+						Position = Vector( -36.2, 169.6, 57.45 ),
 						Angles = Angle( 0, 0, 0 ),
-						Scale = 0.93,
-						Phase = 90,
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3:180"
+								}
+							},
+						}
+					},
+				}
+			},
+		}
+	},
+	{
+		Category = "Cab Lights",
+		Options = {
+			{
+				Option = "Whelen 600 Super-LED",
+				Components = {
+					{
+						Name = "@corner_600",
+						Component = "creeper_whelen_600_superled",
+						Position = Vector( 47.2, 95.5, 96.5 ),
+						Angles = Angle( 0, -90, 0 ),
+						Scale = 1,
+						Segments = {
+							LightEMS = {
+								Frames = {
+									[1] = "1:R 3:R"
+								},
+								Sequences = {
+									["STAGE3"] = sequence():TripleFlash( 1, 0 ):SetTiming( 1/20 ),
+								}
+							},
+						},
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3:180"
+								}
+							},
+						},
+						SubMaterials = {
+							[8] = "sentry/props/koitoflasher/glass",
+						},
+					},
+					{
+						Inherit = "@corner_600",
+						Position = Vector( -47.2, 95.5, 96.5 ),
+						Angles = Angle( 0, 90, 0 ),
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3"
+								}
+							},
+						}
+					},
+				}
+			},
+		}
+	},
+	{
+		Category = "Side Lights",
+		Options = {
+			{
+				Option = "Whelen 900 Super-LED",
+				Components = {
+					{
+						Name = "@side_900",
+						Component = "creeper_whelen_900_led",
+						Position = Vector( 47.2, -32, 101 ),
+						Angles = Angle( 0, -90, 0 ),
+						Scale = 1,
+						Segments = {
+							LightEMS = {
+								Frames = {
+									[1] = "1:R 3:R"
+								},
+								Sequences = {
+									["STAGE3"] = sequence():TripleFlash( 1, 0 ):SetTiming( 1/20 ),
+								}
+							},
+						},
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3"
+								}
+							},
+						},
+						SubMaterials = {
+							[6] = "sentry/props/koitoflasher/glass",
+						},
+					},
+					{
+						Inherit = "@side_900",
+						Position = Vector( 47.2, -230, 101 ),
+						Angles = Angle( 0, -90, 0 ),
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3"
+								}
+							},
+						}
+					},
+					{
+						Inherit = "@side_900",
+						Position = Vector( 47.2, -135, 101 ),
+						Angles = Angle( 0, -90, 0 ),
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3:180"
+								}
+							},
+						}
+					},
+					{
+						Inherit = "@side_900",
+						Position = Vector( -47.2, -32, 101 ),
+						Angles = Angle( 0, 90, 0 ),
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3:180"
+								}
+							},
+						}
+					},
+					{
+						Inherit = "@side_900",
+						Position = Vector( -47.2, -230, 101 ),
+						Angles = Angle( 0, 90, 0 ),
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3:180"
+								}
+							},
+						}
+					},
+					{
+						Inherit = "@side_900",
+						Position = Vector( -47.2, -135, 101 ),
+						Angles = Angle( 0, 90, 0 ),
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3"
+								}
+							},
+						}
+					},
+				}
+			},
+		}
+	},
+	{
+		Category = "Rear Lights",
+		Options = {
+			{
+				Option = "Whelen 600 Super-LED",
+				Components = {
+					{
+						Inherit = "@corner_600",
+						Position = Vector( -40, -241.9, 85 ),
+						Angles = Angle( 0, 180, 0 ),
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3:180"
+								}
+							},
+						}
+					},
+					{
+						Inherit = "@corner_600",
+						Position = Vector( 40, -241.9, 85 ),
+						Angles = Angle( 0, 180, 0 ),
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3"
+								}
+							},
+						}
+					},
+					{
+						Inherit = "@corner_600",
+						Position = Vector( -40, -241.9, 65 ),
+						Angles = Angle( 0, 180, 0 ),
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3"
+								}
+							},
+						}
+					},
+					{
+						Inherit = "@corner_600",
+						Position = Vector( 40, -241.9, 65 ),
+						Angles = Angle( 0, 180, 0 ),
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+								["MODE3"] = {
+									LightEMS = "STAGE3:180"
+								}
+							},
+						}
 					},
 				}
 			},
@@ -96,6 +380,11 @@ VEHICLE.Equipment = {
 						SubMaterials = {
 							[11] = "sentry/props/koitoflasher/glass",
 						},
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+							},
+						}
 					},
 					{
 						Component = "creeper_whelen_l31_lrfd",
@@ -109,206 +398,115 @@ VEHICLE.Equipment = {
 						SubMaterials = {
 							[11] = "sentry/props/koitoflasher/glass",
 						},
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+							},
+						}
 					},
 				}
 			}
 		}
 	},
 	{
-		Category = "Rear 700s",
+		Category = "Left Scene Lights",
 		Options = {
 			{
-				Option = "Whelen 700s",
+				Option = "Left Scene Lights",
 				Components = {
 					{
-						Component = "creeper_whelen_700_superled",
-						Position = Vector( -40.5, -242, 82),
-						Angles = Angle( 0, 180, 0 ),
+						Component = "samm_illum_bar",
+						Position = Vector( -48.3, 64.5, 106.8 ),
+						Angles = Angle( 0, 90, -10 ),
 						Scale = 1,
-						SubMaterials = {
-							[6] = "schmal/photon/fedsig_legend/dome_r",
-						},
+						Inputs = {
+							["Emergency.SceneRight"] = {
+								["ON"] = {}
+							},
+							["Emergency.SceneForward"] = {
+								["ON"] = {}
+							},
+						}
 					},
 					{
-						Component = "creeper_whelen_700_superled",
-						Position = Vector( 40.5, -242, 82),
-						Angles = Angle( 0, 180, 0 ),
+						Component = "samm_illum_bar",
+						Position = Vector( -48.25, -82, 106 ),
+						Angles = Angle( 0, 90, -10 ),
 						Scale = 1,
-						SubMaterials = {
-							[6] = "sentry/props/koitoflasher/glass_amber",
-						},
+						Inputs = {
+							["Emergency.SceneRight"] = {
+								["ON"] = {}
+							},
+							["Emergency.SceneForward"] = {
+								["ON"] = {}
+							},
+						}
 					},
 					{
-						Component = "creeper_whelen_700_superled",
-						Position = Vector( -40.5, -242, 60),
-						Angles = Angle( 0, 180, 0 ),
+						Component = "samm_illum_bar",
+						Position = Vector( -48.25, -182, 106 ),
+						Angles = Angle( 0, 90, -10 ),
 						Scale = 1,
-						SubMaterials = {
-							[6] = "sentry/props/koitoflasher/glass",
-						},
-					},
-					{
-						Component = "creeper_whelen_700_superled",
-						Position = Vector( 40.5, -242, 60),
-						Angles = Angle( 0, 180, 0 ),
-						Scale = 1,
-						SubMaterials = {
-							[6] = "sentry/props/koitoflasher/glass",
-						},
+						Inputs = {
+							["Emergency.SceneRight"] = {
+								["ON"] = {}
+							},
+							["Emergency.SceneForward"] = {
+								["ON"] = {}
+							},
+						}
 					},
 				}
-			}
+			},
 		}
 	},
 	{
-		Category = "Side Flashers",
+		Category = "Right Scene Lights",
 		Options = {
 			{
-				Option = "Osaka Siren LAF-150",
+				Option = "Right Scene Lights",
 				Components = {
 					{
-						Component = "oss_laf150_lrfd", --OSS LEFT
-						Position = Vector( -48.7, 95.2, 96.5 ),
-						BodyGroups = {
-							["bracket"] = 1,
-							["mount"] = 0,
-						},
-						Angles = Angle( 0, 90, 0 ),
-						Scale = 1.0
+						Component = "samm_illum_bar",
+						Position = Vector( 48.3, 63.5, 106.8 ),
+						Angles = Angle( 0, -90, -10 ),
+						Scale = 1,
+						Inputs = {
+							["Emergency.SceneLeft"] = {
+								["ON"] = {}
+							},
+							["Emergency.SceneForward"] = {
+								["ON"] = {}
+							},
+						}
 					},
 					{
-						Component = "oss_laf150_lrfd",
-						Position = Vector( -48.7, -104, 54 ),
-						BodyGroups = {
-							["bracket"] = 1,
-							["mount"] = 0,
-						},
-						Angles = Angle( 0, 90, 0 ),
-						Scale = 1.0
+						Component = "samm_illum_bar",
+						Position = Vector( 48.25, -82, 106 ),
+						Angles = Angle( 0, -90, -10 ),
+						Scale = 1,
+						Inputs = {
+							["Emergency.SceneLeft"] = {
+								["ON"] = {}
+							},
+							["Emergency.SceneForward"] = {
+								["ON"] = {}
+							},
+						}
 					},
 					{
-						Component = "oss_laf150_lrfd",
-						Position = Vector( -48.7, -166, 54 ),
-						BodyGroups = {
-							["bracket"] = 1,
-							["mount"] = 0,
-						},
-						Angles = Angle( 0, 90, 0 ),
-						Scale = 1.0
-					},
-					{
-						Component = "oss_laf150_lrfd", --OSS RIGHT
-						Position = Vector( 48.7, 95.2, 96.5 ),
-						BodyGroups = {
-							["bracket"] = 1,
-							["mount"] = 0,
-						},
-						Angles = Angle( 0, 270, 0 ),
-						Scale = 1.0
-					},
-					{
-						Component = "oss_laf150_lrfd",
-						Position = Vector( 48.7, -104, 54 ),
-						BodyGroups = {
-							["bracket"] = 1,
-							["mount"] = 0,
-						},
-						Angles = Angle( 0, 270, 0 ),
-						Scale = 1.0
-					},
-					{
-						Component = "oss_laf150_lrfd",
-						Position = Vector( 48.7, -166, 54 ),
-						BodyGroups = {
-							["bracket"] = 1,
-							["mount"] = 0,
-						},
-						Angles = Angle( 0, 270, 0 ),
-						Scale = 1.0
-					},
-					{
-						Component = "creeper_whelen_900_led_lrfd", --WHELEN LEFT
-						Position = Vector( -47.1, -35, 101.3 ),
-						Angles = Angle( 0, 90, 0 ),
-						Scale = 1.0,
-						SubMaterials = {
-							[6] = "sentry/himedic/gls_red_front"
-						},
-						Phase = 90,
-					},
-					{
-						Component = "creeper_whelen_900_led_lrfd",
-						Position = Vector( -47.1, -85, 101.3 ),
-						Angles = Angle( 0, 90, 0 ),
-						Scale = 1.0,
-					},
-					{
-						Component = "creeper_whelen_900_led_lrfd", 
-						Position = Vector( -47.1, -135, 101.3 ),
-						Angles = Angle( 0, 90, 0 ),
-						Scale = 1.0,
-						SubMaterials = {
-							[6] = "sentry/himedic/gls_red_front"
-						},
-						Phase = 90,
-					},
-					{
-						Component = "creeper_whelen_900_led_lrfd",
-						Position = Vector( -47.1, -185, 101.3 ),
-						Angles = Angle( 0, 90, 0 ),
-						Scale = 1.0,
-					},
-					{
-						Component = "creeper_whelen_900_led_lrfd", 
-						Position = Vector( -47.1, -230, 101.3 ),
-						Angles = Angle( 0, 90, 0 ),
-						Scale = 1.0,
-						SubMaterials = {
-							[6] = "sentry/himedic/gls_red_front"
-						},
-						Phase = 90,
-					},
-					{
-						Component = "creeper_whelen_900_led_lrfd", --WHELEN RIGHT
-						Position = Vector( 47.1, -35, 101.3 ),
-						Angles = Angle( 0, 270, 0 ),
-						Scale = 1.0,
-						SubMaterials = {
-							[6] = "sentry/himedic/gls_red_front"
-						},
-						Phase = 90,
-					},
-					{
-						Component = "creeper_whelen_900_led_lrfd",
-						Position = Vector( 47.1, -85, 101.3 ),
-						Angles = Angle( 0, 270, 0 ),
-						Scale = 1.0,
-					},
-					{
-						Component = "creeper_whelen_900_led_lrfd", 
-						Position = Vector( 47.1, -135, 101.3 ),
-						Angles = Angle( 0, 270, 0 ),
-						Scale = 1.0,
-						SubMaterials = {
-							[6] = "sentry/himedic/gls_red_front"
-						},
-						Phase = 90,
-					},
-					{
-						Component = "creeper_whelen_900_led_lrfd",
-						Position = Vector( 47.1, -185, 101.3 ),
-						Angles = Angle( 0, 270, 0 ),
-						Scale = 1.0,
-					},
-					{
-						Component = "creeper_whelen_900_led_lrfd", 
-						Position = Vector( 47.1, -230, 101.3 ),
-						Angles = Angle( 0, 270, 0 ),
-						Scale = 1.0,
-						SubMaterials = {
-							[6] = "sentry/himedic/gls_red_front"
-						},
-						Phase = 90,
+						Component = "samm_illum_bar",
+						Position = Vector( 48.25, -182, 106 ),
+						Angles = Angle( 0, -90, -10 ),
+						Scale = 1,
+						Inputs = {
+							["Emergency.SceneLeft"] = {
+								["ON"] = {}
+							},
+							["Emergency.SceneForward"] = {
+								["ON"] = {}
+							},
+						}
 					},
 				}
 			},
@@ -320,12 +518,6 @@ VEHICLE.Equipment = {
 			{
 				Option = "Equipment",
 				Props = {
-					{
-						Model = "models/supermighty/whelen_liberty/whelen_freedom_70inch.mdl",
-						Position = Vector( 0, 140, 106),
-						Angles = Angle( 0, 90, 0 ),
-						Scale = 0.8,
-					},
 					{
 						Model = "models/sentry/props/q2b.mdl",
 						Position = Vector( -30, 174, 39),
