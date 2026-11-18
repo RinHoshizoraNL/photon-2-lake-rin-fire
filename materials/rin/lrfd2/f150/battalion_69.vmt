@@ -1,6 +1,6 @@
 "VertexLitGeneric"
 {
-	"$basetexture" "rin/lrfd2/f150/test"
+	"$basetexture" "rin/lrfd2/f150/battalion_69"
     "$bumpmap" "sentry/shared/skin_nm"
 	
     "$envmap" "env_cubemap"

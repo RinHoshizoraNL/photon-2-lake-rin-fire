@@ -32,7 +32,26 @@ VEHICLE.Equipment = {
 						Component = "fedsig_twinsonic",
 						Position = Vector( 0, 106, 106.2 ),
 						Angles = Angle( 0, 0, 0 ),
-						Scale = 1
+						Scale = 1,
+						States = { [1] = "~R",
+						           [2] = "~R",
+								   [3] = "~R",
+								   [4] = "~R",
+								   [5] = "~R",
+								   [6] = "~R",
+								   [7] = "~R",
+								   [8] = "~R",
+					    },
+						SubMaterials = {
+							[7] = "sentry/props/c3xl/glass_outer",
+							[13] = "schmal/photon/fedsig_visionslr/lens_pod_2",
+						},
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+							}
+						},
 					}
 				}
 			}
@@ -52,6 +71,12 @@ VEHICLE.Equipment = {
 						BodyGroups = {
 							["trim"] = 1,
 						},
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+							}
+						},
 					},
 					{
 						Component = "patlite_hkf",
@@ -60,6 +85,12 @@ VEHICLE.Equipment = {
 						Scale = .9,
 						BodyGroups = {
 							["trim"] = 1,
+						},
+						Inputs = {
+							["Emergency.Warning"] = {
+								["MODE1"] = {},
+								["MODE2"] = {},
+							}
 						},
 					},
 				}

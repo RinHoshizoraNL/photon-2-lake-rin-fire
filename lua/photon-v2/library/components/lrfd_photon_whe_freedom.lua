@@ -171,7 +171,41 @@ COMPONENT.Segments = {
 
 			["CODE3"] = sequence():Add( 2, 3, 4, 5, 6, 7, 8, 9 ):SetVariableTiming( 1/32, 1/12, 0.99 )
 		}
-	}
+	},
+	Takedown = {
+		Frames = {
+			[1] = "29 30 31 32",
+		},
+		Sequences = {
+			["ON"] = { 1 },
+		}
+	},
+	LeftAlley = {
+		Frames = {
+			[1] = "33 35",
+		},
+		Sequences = {
+			["ON"] = { 1 },
+		}
+	},
+	RightAlley = {
+		Frames = {
+			[1] = "34 36",
+		},
+		Sequences = {
+			["ON"] = { 1 },
+		}
+	},
+	["DVI"] = {
+		Frames = {
+			[0] = "[~R*0.3] @01 @02 @03 @04 @05 @06 @07 @08 @09 @10 @11 @12 @13 @14",
+			[1] = "@01:~R @02:~R @05:~R @06:~R @09:~R @10:~R @13:~R @14:~R",
+			[2] = "@03:~R @04:~R @07:~R @08:~R @11:~R @12:~R",
+		},
+		Sequences = {
+			["ON"] = sequence():Sequential(1, 2):Stretch(10)
+		}
+	},
 }
 
 COMPONENT.Inputs = {
@@ -182,5 +216,23 @@ COMPONENT.Inputs = {
 		["MODE3"] = {
 			All = "CODE3"
 		}
-	}
+	},
+	["Emergency.SceneForward"] = {
+		["ON"] = {
+			Takedown = "ON"
+		},
+		["FLOOD"] = {
+			Takedown = "ON"
+		}
+	},
+	["Emergency.SceneLeft"] = {
+		["ON"] = {
+			LeftAlley = "ON"
+		}
+	},
+	["Emergency.SceneRight"] = {
+		["ON"] = {
+			RightAlley = "ON"
+		}
+	},
 }
